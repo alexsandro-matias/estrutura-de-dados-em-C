@@ -1,11 +1,57 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void trocarNumeros(int &a, int &b)
+void trocarNumeros(int *a, int *b)
 {
     int tmp = a;
     a = b;
     b = tmp;
+}
+
+int determinarTamanhoVetor(int *vetor)
+{
+    return sizeof(vetor)/sizeof(int);
+}
+
+//void clonarVetor(int *vetorCopiado, int *vetorOriginal)
+//{
+//    int tamanhoVetor = determinarTamanhoVetor(vetorOriginal);
+//    for (int i = 0 ; i < tamanhoVetor ; i++)
+//    {
+//        vetorCopiado[i] = vetorOriginal[i];
+//    }
+//
+//
+//}
+
+//void aumentarVetor(int *vetor , int numero)
+//{
+//    int tamanhoVetor = sizeof(*vetor)/sizeof(int);
+//    int vetorAuxiliar[tamanhoVetor++];
+//
+//    if(tamanhoVetor == 1)
+//    {
+//        vetor[0] = numero;
+//        clonarVetor(vetor, vetorAuxiliar);
+//
+//    }
+//    else
+//    {
+//
+//        vetor[tamanhoVetor--] = numero;
+//
+//    }
+//
+//
+//}
+
+void imprimirVetor(int *vetor)
+{
+    int tamanhoVetor = determinarTamanhoVetor(*vetor);
+    for (int i = 0; i < tamanhoVetor; i++)
+    {
+        printf("- %d -" , vetor[i]);
+    }
 }
 
 void ordenacaoBolha(int * vetor, int tamanho)
@@ -49,8 +95,8 @@ void selectionsort(int * vetor, int tamanho)
         // Para garatir que não haja comparações de valores iguais
         if(i != posicaoMenor)
         {
-            swap(vetor[posicaoMenor], vetor[i]);
-        }
+    trocarNumeros(vetor[posicaoMenor], vetor[i]);
+}
 
 
     }
@@ -60,6 +106,24 @@ void selectionsort(int * vetor, int tamanho)
 
 int main()
 {
+    int vetor1[4] = {4,0,1,3}, vetor2[3];
+
+//    clonarVetor(*vetor1, *vetor2);
+
+    imprimirVetor(vetor1);
+
+
+
+
+
+//    printf("%d" , tamanho);
+//
+//    aumentarVetor(vetor, 10);
+//    aumentarVetor(vetor, 12);
+
+
+
+
 
     return 0;
 }
